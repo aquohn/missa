@@ -108,28 +108,27 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\spouses}[2][\lit{Sposi}{Spouses}{Sponsi}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 
 \newcommand{\infshs}{\lit{Nel nome del Padre, del Figlio e dello Spirito~Santo.}{In the name of the Father, and of the Son, and of the Holy Spirit.}{In nomine Patris et Filii et Spiritus Sancti.}}
-\newcommand{\tlbwy}{{Il Signore sia con voi.}{The Lord be with you.}{Dominus vobiscum.}}
-\newcommand{\aawy}{E con il tuo spirito.}{And with your spirit.}{Et cum spirito tuo.}
-\newcommand{\luyh}{In alto i nostri cuori.}{Lift up your hearts.}{Sursum corda.}
-\newcommand{\wltuthl}{Sono rivolti al Signore.}{We lift them up to the Lord.}{Habemus ad Dominum.}
-\newcommand{\lugtttlog}{Rendiamo grazie al Signore nostro Dio.}{Let us give thanks to the Lord, our God.}{Gratias agamus Domino Deo nostro.}
-\newcommand{\iirtghtap}{\`{E} cosa buona giusta.}{It is right and just.}{Dignum et justum est.}
+\newcommand{\tlbwy}{\lit{Il Signore sia con voi.}{The Lord be with you.}{Dominus vobiscum.}}
+\newcommand{\aawy}{\lit{E con il tuo spirito.}{And with your spirit.}{Et cum spirito tuo.}}
+\newcommand{\luyh}{\lit{In alto i nostri cuori.}{Lift up your hearts.}{Sursum corda.}}
+\newcommand{\wltuthl}{\lit{Sono rivolti al Signore.}{We lift them up to the Lord.}{Habemus ad Dominum.}}
+\newcommand{\lugtttlog}{\lit{Rendiamo grazie al Signore nostro Dio.}{Let us give thanks to the Lord, our God.}{Gratias agamus Domino Deo nostro.}}
+\newcommand{\iiraj}{\lit{\`{E} cosa buona giusta.}{It is right and just.}{Dignum et justum est.}}
 \newcommand{\amen}{Amen.}
 \newcommand{\kyrie}{Kyrie, el\'eison.}
 \newcommand{\threekyrie}{Kyrie el\'eison, Kyrie el\'eison, Kyrie el\'eison.}
 \newcommand{\christe}{Christe, el\'eison.}
 \newcommand{\alleluia}{Alleluia.}
-\newcommand{\lup}{Preghiamo.}{Let us pray.}{Oremus.}
-\newcommand{\twotl}{Parola di Dio.}{The Word of the Lord.}{Verbum Domini.}
-\newcommand{\tbtg}[1][.]{\lit{Rendiamo grazie a Dio#1}{Thanks be to God#1}{Deo gratias#1}
-\newcommand{\gtyl}{Gloria a te, o Signore.}{Glory to you, O Lord.}{Gloria tibi Domine.}
-\newcommand{\tgotl}{Parola del Signore.}{The Gospel of the Lord.}{Verbum Domini.}
-\newcommand{\ptyljc}{Lode a te, o Cristo.}{Praise to you, Lord Jesus Christ.}{Laus tibi, Christe.}
-\newcommand{\tcol}{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}
+\newcommand{\lup}{\lit{Preghiamo.}{Let us pray.}{Oremus.}}
+\newcommand{\twotl}{\lit{Parola di Dio.}{The Word of the Lord.}{Verbum Domini.}}
+\newcommand{\tbtg}[1][.]{\lit{Rendiamo grazie a Dio#1}{Thanks be to God#1}{Deo gratias#1}}
+\newcommand{\gtyl}{\lit{Gloria a te, o Signore.}{Glory to you, O Lord.}{Gloria tibi Domine.}}
+\newcommand{\tgotl}{\lit{Parola del Signore.}{The Gospel of the Lord.}{Verbum Domini.}}
+\newcommand{\ptyljc}{\lit{Lode a te, o Cristo.}{Praise to you, Lord Jesus Christ.}{Laus tibi, Christe.}}
+\newcommand{\tcol}{\lit{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}}
 
 \newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}]{{\bfseries#2 \hfill #1}}
-
-\newcommand{\blessing}{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross et Spritus~Sanctus.}
+\newcommand{\blessing}{\lit{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross et Spritus~Sanctus.}}
 
 \newcommand{\gloria}{\input{prayers/gloria.tex}}
 \newcommand{\creed}[1][1]{\input{prayers/creed#1.tex}}
@@ -143,10 +142,11 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\summary}[1]{\textcolor{\missa@litcolor}{\footnotesize#1}}
 \newcommand{\commentary}[1]{{\footnotesize\itshape#1}}
 
-\newcommand{\silence}{\textcolor{\missa@litcolor}{\footnotesize(\textit{Pausa~di~silenzio})}}
-\newcommand{\otherwise}{\textcolor{\missa@litcolor}{\footnotesize\itshape Oppure:}}
-\newcommand{\afterwards}{\textcolor{\missa@litcolor}{\footnotesize\itshape A seguire:}}
-\newcommand{\petitions}{\textcolor{\missa@litcolor}{\footnotesize(\textit{Altre~intenzioni})}}
+% TODO
+\newcommand{\silence}{\textcolor{\missa@litcolor}{\footnotesize(\textit{\lit{Pausa~di~silenzio}{A~pause~of~silence}{Pausa~silentii}})}}
+  \newcommand{\otherwise}{\textcolor{\missa@litcolor}{\footnotesize\itshape \lit{Oppure}{Otherwise}{Alioquin}:}}
+  \newcommand{\afterwards}{\textcolor{\missa@litcolor}{\footnotesize\itshape \lit{A seguire}{Afterwards}{Postea}:}}
+\newcommand{\petitions}{\textcolor{\missa@litcolor}{\footnotesize(\textit{\lit{Altre~intenzioni}{Other~intentions}{Aliae~intentiones}})}}
 
 \newcommand{\R}{\textcolor{\missa@litcolor}{\normalfont\bfseries \Response}}
 \newcommand{\cross}{\textcolor{\missa@litcolor}{\Cross}{ }}
