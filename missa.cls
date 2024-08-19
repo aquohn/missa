@@ -13,9 +13,10 @@
 \RequirePackage{bbding} % for cross
 \RequirePackage[jerusalem]{bibleref}
 \RequirePackage{verse}
-\RequirePackage[staffsize=15.87,between-system-space=16]{lilypond}
+% \RequirePackage[staffsize=15.87,between-system-space=16]{lilypond}
 \RequirePackage{fixltx2e} % for \MakeRobust
 \RequirePackage{adforn} % for ornament break
+\RequirePackage{iflang} % for checking language
 
 % New colours
 \definecolor{DartmouthGreen}{rgb}{0,0.4392,0.2353} % RGB (0, 112, 60)
@@ -86,6 +87,8 @@ green,violet,white,red,rose,black}[green]{%
 
 \ProcessOptionsX
 
+\newcommand{\lit}[3]{\IfLanguageName{italian}{#1}{\IfLanguageName{english}{#2}{#3}}}
+
 % Commands
 \MakeRobust{\bibleverse}
 \MakeRobust{\footnote}
@@ -97,37 +100,36 @@ green,violet,white,red,rose,black}[green]{%
    \mbox{\color{black}\normalfont\reference{#1}}%
    \parfillskip=0pt \par}}
 
-\newcommand{\priest}[2][S]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
-\newcommand{\all}[2][T]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\lector}[2][L]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
-\newcommand{\bride}[2][Sposa]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\groom}[2][Sposo]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\bridegrooms}[2][Sposi]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\priest}[2][\lit{S}{P}{S}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
+\newcommand{\all}[2][\lit{T}{A}{O}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\lector}[2][\lit{L}{L}{L}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
+\newcommand{\bride}[2][\lit{Sposa}{Bride}{Sponsa}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\groom}[2][\lit{Sposo}{Groom}{Sponso}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\spouses}[2][\lit{Sposi}{Spouses}{Sponsi}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 
-\newcommand{\infshs}{Nel nome del Padre, del Figlio e dello Spirito~Santo.} % In the name of the Father, and of the Son, and of the Holy Spirit.
-\newcommand{\tlbwy}{Il Signore sia con voi.} % The Lord be with you.
-\newcommand{\aawy}{E con il tuo spirito.} % And also with you.
-\newcommand{\luyh}{In alto i nostri cuori.} % Lift up your hearts.
-\newcommand{\wltuthl}{Sono rivolti al Signore.} % We lift them up to the Lord.
-\newcommand{\lugtttlog}{Rendiamo grazie al Signore nostro Dio.} % Let us give thanks to the Lord, our God.
-\newcommand{\iirtghtap}{È cosa buona giusta.} % It is right to give him thanks and praise. % It doesnt' work (encoding problem with È)
+\newcommand{\infshs}{\lit{Nel nome del Padre, del Figlio e dello Spirito~Santo.}{In the name of the Father, and of the Son, and of the Holy Spirit.}{In nomine Patris et Filii et Spiritus Sancti.}}
+\newcommand{\tlbwy}{{Il Signore sia con voi.}{The Lord be with you.}{Dominus vobiscum.}}
+\newcommand{\aawy}{E con il tuo spirito.}{And with your spirit.}{Et cum spirito tuo.}
+\newcommand{\luyh}{In alto i nostri cuori.}{Lift up your hearts.}{Sursum corda.}
+\newcommand{\wltuthl}{Sono rivolti al Signore.}{We lift them up to the Lord.}{Habemus ad Dominum.}
+\newcommand{\lugtttlog}{Rendiamo grazie al Signore nostro Dio.}{Let us give thanks to the Lord, our God.}{Gratias agamus Domino Deo nostro.}
+\newcommand{\iirtghtap}{\`{E} cosa buona giusta.}{It is right and just.}{Dignum et justum est.}
 \newcommand{\amen}{Amen.}
 \newcommand{\kyrie}{Kyrie, el\'eison.}
 \newcommand{\threekyrie}{Kyrie el\'eison, Kyrie el\'eison, Kyrie el\'eison.}
 \newcommand{\christe}{Christe, el\'eison.}
 \newcommand{\alleluia}{Alleluia.}
-\newcommand{\lup}{Preghiamo.} % Let us pray.
-\newcommand{\twotl}{Parola di Dio.} % The Word of the Lord.
-\newcommand{\tbtg}[1][.]{Rendiamo grazie a Dio#1} % Thanks be to God!
-\newcommand{\gtyl}{Gloria a te, o Signore.} % Glory to you, Lord!
-\newcommand{\tgotl}{Parola del Signore.} % The Gospel of the Lord.
-\newcommand{\ptyljc}{Lode a te, o Cristo.} % Praise to you, Lord Jesus Christ!
-\newcommand{\tcol}{Per Cristo nostro Signore.} % Through Christ our Lord.
-\newcommand{\wpyawgyt}{Noi ti lodiamo e ti rendiamo grazie.} % We praise you and we give you thanks.
+\newcommand{\lup}{Preghiamo.}{Let us pray.}{Oremus.}
+\newcommand{\twotl}{Parola di Dio.}{The Word of the Lord.}{Verbum Domini.}
+\newcommand{\tbtg}[1][.]{\lit{Rendiamo grazie a Dio#1}{Thanks be to God#1}{Deo gratias#1}
+\newcommand{\gtyl}{Gloria a te, o Signore.}{Glory to you, O Lord.}{Gloria tibi Domine.}
+\newcommand{\tgotl}{Parola del Signore.}{The Gospel of the Lord.}{Verbum Domini.}
+\newcommand{\ptyljc}{Lode a te, o Cristo.}{Praise to you, Lord Jesus Christ.}{Laus tibi, Christe.}
+\newcommand{\tcol}{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}
 
-\newcommand{\intercession}[2][prega]{{\bfseries#2 \hfill #1 per noi}}
+\newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}]{{\bfseries#2 \hfill #1}}
 
-\newcommand{\blessing}{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito Santo.} % May almighty God bless you, the Father, and the Son, and the Holy Spirit.
+\newcommand{\blessing}{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross et Spritus~Sanctus.}
 
 \newcommand{\gloria}{\input{prayers/gloria.tex}}
 \newcommand{\creed}[1][1]{\input{prayers/creed#1.tex}}
