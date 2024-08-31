@@ -45,7 +45,7 @@
 }
 
 % \makecolorbox and \framecolorbox
-\RequirePackage{xparse,calc}
+\RequirePackage{calc}
 \DeclareDocumentCommand\makecolorbox{o m O{\width} O{c} m}{%
   \IfNoValueTF{#1}{\colorbox{#2}}{\colorbox[#1]{#2}}%
     {\makebox[#3][#4]{#5}}}
@@ -93,6 +93,7 @@ green,violet,white,red,rose,black}[green]{%
 \MakeRobust{\bibleverse}
 \MakeRobust{\footnote}
 \MakeRobust{\linebreak}
+
 \newcommand{\moment}[2][]{\subsection{#2\put@reference{#1}}}
 \newcommand{\singing}[1][]{\textcolor{\missa@litcolor}{\footnotesize\itshape In canto:}\put@reference{#1}}
 \DeclareRobustCommand\put@reference[1]{%
@@ -100,12 +101,20 @@ green,violet,white,red,rose,black}[green]{%
    \mbox{\color{black}\normalfont\reference{#1}}%
    \parfillskip=0pt \par}}
 
+% TODO use tabto
 \newcommand{\priest}[2][\lit{S}{P}{S}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
 \newcommand{\all}[2][\lit{T}{A}{O}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 \newcommand{\lector}[2][\lit{L}{L}{L}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
+
+% Matrimony
 \newcommand{\bride}[2][\lit{Sposa}{Bride}{Sponsa}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 \newcommand{\groom}[2][\lit{Sposo}{Groom}{Sponso}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 \newcommand{\spouses}[2][\lit{Sposi}{Spouses}{Sponsi}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+
+% Baptism
+\newcommand{\parents}[2][\lit{Genitori}{Parents}{Parentes}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\godparents}[2][\lit{Padrini}{Godparents}{Patrini}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\pandg}[2][\lit{Genitori e padrini}{Parents and godparents}{Parentes et patrini}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
 
 \newcommand{\infshs}{\lit{Nel nome del Padre, del Figlio e dello Spirito~Santo.}{In the name of the Father, and of the Son, and of the Holy Spirit.}{In nomine Patris et Filii et Spiritus Sancti.}}
 \newcommand{\tlbwy}{\lit{Il Signore sia con voi.}{The Lord be with you.}{Dominus vobiscum.}}
@@ -127,7 +136,7 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\ptyljc}{\lit{Lode a te, o Cristo.}{Praise to you, Lord Jesus Christ.}{Laus tibi, Christe.}}
 \newcommand{\tcol}{\lit{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}}
 
-\newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}]{{\bfseries#2 \hfill #1}}
+\newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}.]{{#2, \hfill \textbf{#1}}\\}
 \newcommand{\blessing}{\lit{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross et Spritus~Sanctus.}}
 
 \newcommand{\gloria}{\input{prayers/gloria.tex}}
