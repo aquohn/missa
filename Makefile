@@ -13,4 +13,4 @@ install: $(SRC)
 
 test: $(SRC) examples/test.tex
 	for f in $(SRC); do ln -sf "../$$f" "examples/$$f"; done
-	cd examples && latexmk -auxdir=latexmk -pdf
+	cd examples && latexmk -auxdir=latexmk -c && latexmk -auxdir=latexmk -pdf

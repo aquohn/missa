@@ -14,3 +14,4 @@ bibleref/*
 lilypond.sty
 config.ly
 testlily-*
+examples/missa*

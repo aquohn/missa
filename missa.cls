@@ -17,6 +17,7 @@
 \RequirePackage{fixltx2e} % for \MakeRobust
 \RequirePackage{adforn} % for ornament break
 \RequirePackage{iflang} % for checking language
+\RequirePackage{parskip} % for setting space between paragraphs
 
 % New colours
 \definecolor{DartmouthGreen}{rgb}{0,0.4392,0.2353} % RGB (0, 112, 60)
@@ -88,6 +89,14 @@ green,violet,white,red,rose,black}[green]{%
 \ProcessOptionsX
 
 \newcommand{\lit}[3]{\IfLanguageName{italian}{#1}{\IfLanguageName{english}{#2}{#3}}}
+% TODO fix this
+\newcommand{\nlvcmd}[2]{%
+  \makeatletter
+  \expandafter\newcommand{\csname #1 \endcsname}{\@ifstar{\csname #1@star \endcsname}{\csname #1@nostar \endcsname}}
+  \expandafter\newcommand{\csname #1@nostar \endcsname}{#2\\}
+  \expandafter\newcommand{\csname #1@star \endcsname}{#2}
+  \makeatother
+}
 
 % Commands
 \MakeRobust{\bibleverse}
