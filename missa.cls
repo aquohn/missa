@@ -15,9 +15,11 @@
 \RequirePackage{verse}
 % \RequirePackage[staffsize=15.87,between-system-space=16]{lilypond}
 \RequirePackage{fixltx2e} % for \MakeRobust
+\RequirePackage{bbding} % for cross
 \RequirePackage{adforn} % for ornament break
 \RequirePackage{iflang} % for checking language
 \RequirePackage{parskip} % for setting space between paragraphs
+\RequirePackage{array} % for better tables
 
 % New colours
 \definecolor{DartmouthGreen}{rgb}{0,0.4392,0.2353} % RGB (0, 112, 60)
@@ -31,7 +33,7 @@
 \newcommand{\missa@rite}{roman} % rite
 
 % Response sign
-\newcommand\Response{{%
+\newcommand{\Response}{{%
 \setbox0\hbox{R}
 \unitlength\ht0
 \picture(0,0)\linethickness{.075\unitlength}
@@ -110,20 +112,35 @@ green,violet,white,red,rose,black}[green]{%
    \mbox{\color{black}\normalfont\reference{#1}}%
    \parfillskip=0pt \par}}
 
-% TODO use tabto
-\newcommand{\priest}[2][\lit{S}{P}{S}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
-\newcommand{\all}[2][\lit{T}{A}{O}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\lector}[2][\lit{L}{L}{L}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}#2}
+\newcommand{\rmpart}[2]{
+  \setlength{\tabcolsep}{0em}
+  \begin{tabular}{p{0.2\linewidth}@{\hspace{0.05\linewidth}}p{0.75\linewidth}}
+    {\color{\missa@litcolor} #1} & #2
+  \end{tabular}
+}
+\newcommand{\bfpart}[2]{\rmpart{#1}{{\bfseries#2}}}
+
+\newcommand{\priest}[2][\lit{S}{P}{S}:]{\rmpart{#1}{#2}}
+\newcommand{\all}[2][\lit{T}{A}{O}:]{\bfpart{#1}{#2}}
+\newcommand{\lector}[2][\lit{L}{L}{L}:]{\rmpart{#1}{#2}}
+\newcommand{\response}[1]{\bfpart{\R}{#1}}
+
+% Long form
+\newcommand{\Priest}[2][\lit{Sacerdote}{Priest}{Sacerdos}:]{\rmpart{#1}{#2}}
+\newcommand{\All}[2][\lit{Tutti}{All}{Omnes}:]{\bfpart{#1}{#2}}
+\newcommand{\Commentator}[2][\lit{Commentatore}{Commentator}{Commentator}:]{\rmpart{#1}{#2}}
+\newcommand{\Lector}[2][\lit{L}{Lector}{L}:]{\rmpart{#1}{#2}} % TODO
+\newcommand{\Cantor}[2][\lit{C}{Cantor}{C}:]{\rmpart{#1}{#2}} % TODO
 
 % Matrimony
-\newcommand{\bride}[2][\lit{Sposa}{Bride}{Sponsa}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\groom}[2][\lit{Sposo}{Groom}{Sponso}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\spouses}[2][\lit{Sposi}{Spouses}{Sponsi}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\bride}[2][\lit{Sposa}{Bride}{Sponsa}:]{\bfpart{#1}{#2}}
+\newcommand{\groom}[2][\lit{Sposo}{Groom}{Sponso}:]{\bfpart{#1}{#2}}
+\newcommand{\spouses}[2][\lit{Sposi}{Spouses}{Sponsi}:]{\bfpart{#1}{#2}}
 
 % Baptism
-\newcommand{\parents}[2][\lit{Genitori}{Parents}{Parentes}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\godparents}[2][\lit{Padrini}{Godparents}{Patrini}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
-\newcommand{\pandg}[2][\lit{Genitori e padrini}{Parents and godparents}{Parentes et patrini}]{\textcolor{\missa@litcolor}{#1}\nobreak\hspace{1em}{\bfseries#2}}
+\newcommand{\parents}[2][\lit{Genitori}{Parents}{Parentes}:]{\bfpart{#1}{#2}}
+\newcommand{\godparents}[2][\lit{Padrini}{Godparents}{Patrini}:]{\bfpart{#1}{#2}}
+\newcommand{\pandg}[2][\lit{Genitori e padrini}{Parents and godparents}{Parentes et patrini}:]{\bfpart{#1}{#2}}
 
 \newcommand{\infshs}{\lit{Nel nome del Padre, del Figlio e dello Spirito~Santo.}{In the name of the Father, and of the Son, and of the Holy Spirit.}{In nomine Patris et Filii et Spiritus Sancti.}}
 \newcommand{\tlbwy}{\lit{Il Signore sia con voi.}{The Lord be with you.}{Dominus vobiscum.}}
@@ -146,7 +163,7 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\tcol}{\lit{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}}
 
 \newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}.]{{#2, \hfill \textbf{#1}}\\}
-\newcommand{\blessing}{\lit{Vi benedica Dio onnipotente, Padre e Figlio \cross e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross et Spritus~Sanctus.}}
+\newcommand{\blessing}{\lit{Vi benedica Dio onnipotente, Padre e Figlio \cross{} e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross{} and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross{} et Spritus~Sanctus.}}
 
 \newcommand{\gloria}{\input{prayers/gloria.tex}}
 \newcommand{\creed}[1][1]{\input{prayers/creed#1.tex}}
@@ -157,19 +174,19 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\reading}[1][]{\input{readings/reading#1.tex}}
 \newcommand{\gospel}[1][]{\input{readings/gospel#1.tex}}
 
-\newcommand{\summary}[1]{\textcolor{\missa@litcolor}{\footnotesize#1}}
+\newcommand{\summary}[1]{{\color{\missa@litcolor}\footnotesize#1}}
 \newcommand{\commentary}[1]{{\footnotesize\itshape#1}}
 
 % TODO
-\newcommand{\silence}{\textcolor{\missa@litcolor}{\footnotesize(\textit{\lit{Pausa~di~silenzio}{A~pause~of~silence}{Pausa~silentii}})}}
-  \newcommand{\otherwise}{\textcolor{\missa@litcolor}{\footnotesize\itshape \lit{Oppure}{Otherwise}{Alioquin}:}}
-  \newcommand{\afterwards}{\textcolor{\missa@litcolor}{\footnotesize\itshape \lit{A seguire}{Afterwards}{Postea}:}}
-\newcommand{\petitions}{\textcolor{\missa@litcolor}{\footnotesize(\textit{\lit{Altre~intenzioni}{Other~intentions}{Aliae~intentiones}})}}
+\newcommand{\silence}{{\color{\missa@litcolor}\footnotesize(\textit{\lit{Pausa~di~silenzio}{A~pause~of~silence}{Pausa~silentii}})}}
+\newcommand{\otherwise}{{\color{\missa@litcolor}\footnotesize\itshape \lit{Oppure}{Otherwise}{Alioquin}:}}
+\newcommand{\afterwards}{{\color{\missa@litcolor}\footnotesize\itshape \lit{A seguire}{Afterwards}{Postea}:}}
+\newcommand{\petitions}{{\color{\missa@litcolor}\footnotesize(\textit{\lit{Altre~intenzioni}{Other~intentions}{Aliae~intentiones}})}}
 
-\newcommand{\R}{\textcolor{\missa@litcolor}{\normalfont\bfseries \Response}}
-\newcommand{\cross}{\textcolor{\missa@litcolor}{\Cross}{ }}
+\newcommand{\R}{{\bfseries\Response}}
+\newcommand{\cross}{{\color{\missa@litcolor}\CrossMaltese}}
 
-\newcommand{\reference}[1]{{\footnotesize#1}}
+\newcommand{\reference}[1]{{\normalfont\footnotesize#1}}
 \newcommand{\cantemus}[1]{CD~#1}
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
