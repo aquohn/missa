@@ -105,12 +105,11 @@ green,violet,white,red,rose,black}[green]{%
 \MakeRobust{\footnote}
 \MakeRobust{\linebreak}
 
-\newcommand{\moment}[2][]{\subsection{#2\put@reference{#1}}}
-\newcommand{\singing}[1][]{\textcolor{\missa@litcolor}{\footnotesize\itshape In canto:}\put@reference{#1}}
 \DeclareRobustCommand\put@reference[1]{%
   {\unskip\nobreak\hfil\penalty50 \hspace{2em}\null\nobreak\hfil
    \mbox{\color{black}\normalfont\reference{#1}}%
    \parfillskip=0pt \par}}
+\newcommand{\moment}[2][]{\subsection{#2\put@reference{#1}}}
 
 \newcommand{\rmpart}[2]{
   \setlength{\tabcolsep}{0em}
@@ -163,6 +162,7 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\tcol}{\lit{Per Cristo nostro Signore.}{Through Christ our Lord.}{Per Christum Dominum nostrum.}}
 
 \newcommand{\intercession}[2][\lit{prega per noi}{pray for us}{ora pro nobis}.]{{#2, \hfill \textbf{#1}}\\}
+\newcommand{\antiphon}[1]{{\color{\missa@litcolor}\textbf{\lit{Ant.}{Ant.}{Ant.}}} \textbf{#1}}
 \newcommand{\blessing}{\lit{Vi benedica Dio onnipotente, Padre e Figlio \cross{} e Spirito~Santo.}{May almighty God bless you, the Father, and the Son, \cross{} and the Holy~Spirit.}{Benedicat vos omnipotens Deus, Pater, et Filius, \cross{} et Spritus~Sanctus.}}
 
 \newcommand{\gloria}{\input{prayers/gloria.tex}}
@@ -177,7 +177,6 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\summary}[1]{{\color{\missa@litcolor}\footnotesize#1}}
 \newcommand{\commentary}[1]{{\footnotesize\itshape#1}}
 
-% TODO
 \newcommand{\silence}{{\color{\missa@litcolor}\footnotesize(\textit{\lit{Pausa~di~silenzio}{A~pause~of~silence}{Pausa~silentii}})}}
 \newcommand{\otherwise}{{\color{\missa@litcolor}\footnotesize\itshape \lit{Oppure}{Otherwise}{Alioquin}:}}
 \newcommand{\afterwards}{{\color{\missa@litcolor}\footnotesize\itshape \lit{A seguire}{Afterwards}{Postea}:}}
@@ -187,7 +186,6 @@ green,violet,white,red,rose,black}[green]{%
 \newcommand{\cross}{{\color{\missa@litcolor}\CrossMaltese}}
 
 \newcommand{\reference}[1]{{\normalfont\footnotesize#1}}
-\newcommand{\cantemus}[1]{CD~#1}
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -198,6 +196,13 @@ green,violet,white,red,rose,black}[green]{%
     \begin{verse}
   }
   {\end{verse}}
+
+\newenvironment{singing}
+  {\setlength{\vindent}{2em}\bfseries
+    \begin{verse}
+  }
+  {\end{verse}}
+
 
 \newenvironment{refrain}
   {\setlength{\leftmargini}{2em}
