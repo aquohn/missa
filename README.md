@@ -1,8 +1,9 @@
-About missa
+About `missa`
 ===========
-missa is a LaTeX class to write liturgical booklets and leaflets. This is John Khoo's fork of Carlo Stemberger's original class, redesigned to support multiple languages.
+`missa` is a LaTeX class to write liturgical booklets and leaflets. This is John Khoo's fork of Carlo Stemberger's original class, redesigned to support multiple languages.
 
 Copyright © 2010-2018, Carlo Stemberger
+
 Copyright © 2024-2025, John Khoo
 
 License
